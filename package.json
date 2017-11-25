@@ -1,0 +1,9 @@
+{
+  "name": "Dashboard",
+  "version": "0.0.1",
+  "description": "Dashboard for The Source of Truth",
+  "main": "index.js",
+  "repository": "https://github.com/TheSourceOfTruth/Dashboard",
+  "author": "Kyle Bradford <kfoxb@kfoxb.com>",
+  "license": "Apache-2.0"
+}
