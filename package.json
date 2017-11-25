@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/TheSourceOfTruth/Dashboard",
   "author": "Kyle Bradford <kfoxb@kfoxb.com>",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1"
+  }
 }
