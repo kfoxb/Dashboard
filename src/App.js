@@ -1,7 +1,10 @@
 import React from 'react';
+import Login from './Login';
 
-export default class app extends React.Component {
+export default class App extends React.Component {
   render() {
-    return (<h1>Hi World</h1>);
+    return (
+      <Login />
+    );
   }
 }
