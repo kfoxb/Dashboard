@@ -1,24 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['react-hot-loader/patch', './src/index.js'],
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Dashboard',
       inject: false,
       template: require('html-webpack-template'),
       appMountId: 'app',
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: './dist',
-    overlay: true
+    overlay: true,
+    hot: true,
   },
   module: {
     rules: [
@@ -28,7 +33,7 @@ module.exports = {
         use: {
           loader: require.resolve('babel-loader'),
           options: {
-            cacheDirectory: true
+            cacheDirectory: true,
           }
         }
       }
