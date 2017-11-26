@@ -34,10 +34,19 @@ module.exports = {
           loader: require.resolve('babel-loader'),
           options: {
             cacheDirectory: true,
-          }
-        }
+          },
+        },
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
       }
-    ]
-  }
+    ],
+  },
 };
 

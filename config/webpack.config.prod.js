@@ -36,8 +36,14 @@ module.exports = {
         use: {
           loader: require.resolve('babel-loader'),
         }
-      }
-    ]
-  }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ],
+      },
+    ],
+  },
 };
 
