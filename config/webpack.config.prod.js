@@ -5,18 +5,17 @@ module.exports = {
   entry: './src/index.js',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Dashboard'
+      title: 'Dashboard',
+      inject: false,
+      template: require('html-webpack-template'),
+      appMountId: 'app',
     })
   ],
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: 'bundle.js',
   },
-  // devtool: 'cheap-module-source-map',
-  devServer: {
-    contentBase: './dist',
-    overlay: true
-  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -24,9 +23,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: require.resolve('babel-loader'),
-          // options: {
-          //   cacheDirectory: true
-          // }
         }
       }
     ]
