@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
+const template = require('html-webpack-template');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   plugins: [
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
@@ -13,7 +14,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Dashboard',
       inject: false,
-      template: require('html-webpack-template'),
+      template,
       appMountId: 'app',
     }),
     new webpack.DefinePlugin({
@@ -28,19 +29,22 @@ module.exports = {
     filename: 'bundle.js',
   },
   devtool: 'source-map',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: require.resolve('babel-loader'),
-        }
+        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader'
+          'file-loader',
         ],
       },
     ],
