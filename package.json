@@ -25,5 +25,13 @@
   "scripts": {
     "start": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
     "build": "webpack --config ./config/webpack.config.prod.js"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
   }
 }
