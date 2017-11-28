@@ -14,7 +14,7 @@ module.exports = (config) => {
     preprocessors: {
       [testFile]: ['webpack', 'sourcemap'],
     },
-    reporters: ['dots'],
+    reporters: ['progress'],
     singleRun: true,
     // webpack config object
     webpack: webpackProdConfig,
