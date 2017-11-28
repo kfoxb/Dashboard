@@ -8,7 +8,7 @@ module.exports = (config) => {
     // karma only needs to know about the test bundle
     files: [
       {
-        pattern: './dist/react.dll.js/',
+        pattern: './dist/dependencies.dll.js/',
         watched: false,
         served: true,
       },
