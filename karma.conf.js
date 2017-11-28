@@ -7,6 +7,11 @@ module.exports = (config) => {
     browsers: ['Chrome'],
     // karma only needs to know about the test bundle
     files: [
+      {
+        pattern: './dist/react.dll.js/',
+        watched: false,
+        served: true,
+      },
       testFile,
     ],
     frameworks: ['chai', 'mocha'],
