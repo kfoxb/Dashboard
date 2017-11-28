@@ -2,7 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const template = require('html-webpack-template');
+const manifest = require('../dist/react-manifest.json');
 
+const outputPath = path.resolve(__dirname, '..', 'dist');
 module.exports = {
   entry: ['react-hot-loader/patch', './src/index.jsx'],
   plugins: [
@@ -11,12 +13,20 @@ module.exports = {
       inject: false,
       template,
       appMountId: 'app',
+      scripts: ['react.dll.js'],
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname),
+      manifest,
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: outputPath,
     filename: 'bundle.js',
     publicPath: '/',
   },
