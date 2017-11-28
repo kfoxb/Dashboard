@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^1.9.0",
@@ -41,6 +43,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
     "build": "webpack --config ./config/webpack.config.prod.js",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "test-watch": "karma start karma.conf.js --no-single-run --auto-watch"
   }
 }

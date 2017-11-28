@@ -1,12 +1,13 @@
-const path = require('path');
+const webpackProdConfig = require('./config/webpack.config.prod.js');
 
+webpackProdConfig.devtool = 'inline-source-map';
+const testFile = 'config/setup.test.js';
 module.exports = (config) => {
   config.set({
     browsers: ['Chrome'],
     // karma only needs to know about the test bundle
     files: [
-      'src/**/*.test.js',
-      'src/**/*.test.jsx',
+      testFile,
     ],
     frameworks: ['chai', 'mocha'],
     plugins: [
@@ -18,28 +19,12 @@ module.exports = (config) => {
     ],
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {
-      '**/*test.js': ['webpack', 'sourcemap'],
-      '**/*test.jsx': ['webpack', 'sourcemap'],
+      [testFile]: ['webpack', 'sourcemap'],
     },
     reporters: ['dots'],
     singleRun: true,
     // webpack config object
-    webpack: {
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          {
-            include: [
-              path.join(__dirname, 'src'),
-              path.join(__dirname),
-            ],
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            test: /\.jsx?$/,
-          },
-        ],
-      },
-    },
+    webpack: webpackProdConfig,
     webpackMiddleware: {
       noInfo: true,
     },
