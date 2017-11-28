@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const template = require('html-webpack-template');
-const manifest = require('../dist/react-manifest.json');
+const manifest = require('../dist/dependencies.dll.manifest.json');
 
 const outputPath = path.resolve(__dirname, '..', 'dist');
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       inject: false,
       template,
       appMountId: 'app',
-      scripts: ['react.dll.js'],
+      scripts: ['dependencies.dll.js'],
     }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname),

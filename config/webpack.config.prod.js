@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const template = require('html-webpack-template');
-const manifest = require('../dist/react-manifest.json');
+const manifest = require('../dist/dependencies.dll.manifest.json');
 
 const outputPath = path.resolve(__dirname, '..', 'dist');
 module.exports = {
@@ -12,14 +12,14 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
-      exclude: ['react-manifest.json', 'react.dll.js'],
+      exclude: ['dependencies.dll.js', 'dependencies.dll.manifest.json'],
     }),
     new HtmlWebpackPlugin({
       title: 'Dashboard',
       inject: false,
       template,
       appMountId: 'app',
-      scripts: ['react.dll.js'],
+      scripts: ['dependencies.dll.js'],
     }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname),
