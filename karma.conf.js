@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = (config) => {
   config.set({
     browsers: ['Chrome'],
@@ -16,7 +18,8 @@ module.exports = (config) => {
     ],
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {
-      'tests.bundle.js': ['webpack', 'sourcemap'],
+      '**/*test.js': ['webpack', 'sourcemap'],
+      '**/*test.jsx': ['webpack', 'sourcemap'],
     },
     reporters: ['dots'],
     singleRun: true,
@@ -26,6 +29,10 @@ module.exports = (config) => {
       module: {
         loaders: [
           {
+            include: [
+              path.join(__dirname, 'src'),
+              path.join(__dirname),
+            ],
             exclude: /node_modules/,
             loader: 'babel-loader',
             test: /\.jsx?$/,
