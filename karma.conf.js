@@ -10,13 +10,6 @@ module.exports = (config) => {
       testFile,
     ],
     frameworks: ['chai', 'mocha'],
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-chai',
-      'karma-mocha',
-      'karma-sourcemap-loader',
-      'karma-webpack',
-    ],
     // run the bundle through the webpack and sourcemap plugins
     preprocessors: {
       [testFile]: ['webpack', 'sourcemap'],
