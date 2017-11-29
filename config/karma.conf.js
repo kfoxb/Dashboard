@@ -1,28 +1,28 @@
-const webpackProdConfig = require('./config/webpack.config.prod.js');
+const webpackProdConfig = require('./webpack.config.prod.js');
 const webpack = require('webpack');
 const path = require('path');
-const devManifest = require('./dist/devDependencies.dll.manifest.json');
+const devManifest = require('../dist/devDependencies.dll.manifest.json');
 
 webpackProdConfig.plugins = [
   new webpack.DllReferencePlugin({
-    context: path.resolve(__dirname, 'config'),
+    context: path.resolve(__dirname),
     manifest: devManifest,
   }),
 ].concat(webpackProdConfig.plugins);
 
-const testFile = 'config/setup.test.js';
+const testFile = './setup.test.js';
 module.exports = (config) => {
   config.set({
     browsers: ['Chrome'],
     // karma only needs to know about the test bundle
     files: [
       {
-        pattern: './dist/dependencies.dll.js/',
+        pattern: '../dist/dependencies.dll.js/',
         watched: false,
         served: true,
       },
       {
-        pattern: './dist/devDependencies.dll.js/',
+        pattern: '../dist/devDependencies.dll.js/',
         watched: false,
         served: true,
       },
