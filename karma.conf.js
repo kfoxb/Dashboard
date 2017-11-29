@@ -36,7 +36,7 @@ module.exports = (config) => {
     reporters: ['progress'],
     singleRun: true,
     // webpack config object
-    webpack: webpackTestConfig,
+    webpack: webpackProdConfig,
     webpackMiddleware: {
       noInfo: true,
     },
