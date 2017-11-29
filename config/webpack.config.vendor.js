@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const pkg = require('../package.json');
 
 const outputPath = path.join(__dirname, '../dist');
@@ -16,12 +17,15 @@ module.exports = {
     path: outputPath,
     library: '[name]',
   },
-
   plugins: [
     new webpack.DllPlugin({
       context: __dirname,
       name: '[name]',
       path: path.join(outputPath, '[name].dll.manifest.json'),
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new UglifyJsPlugin(),
   ],
 };
