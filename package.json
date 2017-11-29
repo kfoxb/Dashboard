@@ -44,7 +44,7 @@
     "webpack-dev-server": "^2.9.5"
   },
   "scripts": {
-    "build": "yarn buildDll && webpack --config ./config/webpack.config.prod.js",
+    "build": "webpack --config ./config/webpack.config.prod.js",
     "buildDll": "webpack --config ./config/webpack.config.vendor.js",
     "start": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
     "test": "karma start karma.conf.js",
