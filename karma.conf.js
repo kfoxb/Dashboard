@@ -1,4 +1,14 @@
-const webpackTestConfig = require('./config/webpack.config.test.js');
+const webpackProdConfig = require('./config/webpack.config.prod.js');
+const webpack = require('webpack');
+const path = require('path');
+const devManifest = require('./dist/devDependencies.dll.manifest.json');
+
+webpackProdConfig.plugins = [
+  new webpack.DllReferencePlugin({
+    context: path.resolve(__dirname, 'config'),
+    manifest: devManifest,
+  }),
+].concat(webpackProdConfig.plugins);
 
 const testFile = 'config/setup.test.js';
 module.exports = (config) => {
