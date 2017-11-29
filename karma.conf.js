@@ -1,6 +1,5 @@
-const webpackProdConfig = require('./config/webpack.config.prod.js');
+const webpackTestConfig = require('./config/webpack.config.test.js');
 
-webpackProdConfig.devtool = 'inline-source-map';
 const testFile = 'config/setup.test.js';
 module.exports = (config) => {
   config.set({
@@ -9,6 +8,11 @@ module.exports = (config) => {
     files: [
       {
         pattern: './dist/dependencies.dll.js/',
+        watched: false,
+        served: true,
+      },
+      {
+        pattern: './dist/devDependencies.dll.js/',
         watched: false,
         served: true,
       },
@@ -22,7 +26,7 @@ module.exports = (config) => {
     reporters: ['progress'],
     singleRun: true,
     // webpack config object
-    webpack: webpackProdConfig,
+    webpack: webpackTestConfig,
     webpackMiddleware: {
       noInfo: true,
     },

@@ -8,6 +8,7 @@ module.exports = {
   context: process.cwd(),
   entry: {
     dependencies: Object.keys(pkg.dependencies),
+    devDependencies: ['enzyme', 'enzyme-adapter-react-16', 'chai'],
   },
 
   output: {

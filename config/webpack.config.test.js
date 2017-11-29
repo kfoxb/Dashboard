@@ -1,19 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const template = require('html-webpack-template');
 const manifest = require('../dist/dependencies.dll.manifest.json');
+const devManifest = require('../dist/devDependencies.dll.manifest.json');
 
 const outputPath = path.resolve(__dirname, '..', 'dist');
 module.exports = {
   entry: './src/index.jsx',
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '..'),
-      exclude: ['dependencies.dll.js', 'dependencies.dll.manifest.json', 'devDependencies.dll.js', 'devDependencies.dll.manifest.json'],
-    }),
     new HtmlWebpackPlugin({
       title: 'Dashboard',
       inject: false,
@@ -24,6 +20,10 @@ module.exports = {
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname),
       manifest,
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname),
+      manifest: devManifest,
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
