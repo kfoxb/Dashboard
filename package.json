@@ -45,7 +45,8 @@
   },
   "scripts": {
     "build": "webpack --config ./config/webpack.config.prod.js",
-    "buildDll": "webpack --config ./config/webpack.config.vendor.js",
+    "bootstrap": "webpack --config ./config/webpack.config.vendor.js",
+    "clean": "rm -rf ./dist",
     "start": "webpack-dev-server --progress --open --config ./config/webpack.config.dev.js",
     "test": "karma start karma.conf.js",
     "test-watch": "karma start karma.conf.js --no-single-run --auto-watch"
