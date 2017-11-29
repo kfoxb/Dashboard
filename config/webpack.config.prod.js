@@ -20,6 +20,9 @@ module.exports = {
       template,
       appMountId: 'app',
       scripts: ['dependencies.dll.js'],
+      minify: {
+        collapseWhitespace: true,
+      },
     }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname),
